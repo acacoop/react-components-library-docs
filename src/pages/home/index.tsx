@@ -7,13 +7,15 @@ export function HomePage() {
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center py-12">
-        <img
-          src={brandAssets.logoIcon}
-          alt="ACA Logo"
-          className="w-20 h-20 mx-auto mb-6"
-        />
+        <div className="mx-auto mb-6 w-48 h-20 bg-transparent rounded-lg flex items-center justify-center">
+          <img
+            src={brandAssets.logoFullDark}
+            alt="ACA Logo - horizontal"
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF9100]/10 text-[#FF9100] text-sm font-medium mb-6">
-          v0.1.0 - Development
+          v0.1.0 - Desarrollo
         </div>
         <h1 className="text-5xl font-bold text-slate-900 mb-6">
           Desarrollá más rápido con <br />
@@ -180,11 +182,10 @@ export function HomePage() {
             className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#282D86] hover:shadow-md transition-all"
           >
             <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#282D86] transition-colors">
-              Primitives
+              Primitivos
             </h3>
             <p className="text-slate-600">
-              Button, Typography, Spinner - Los bloques de construcción más
-              básicos
+              Botones, Tipografía y Spinner — bloques de construcción básicos
             </p>
           </Link>
           <Link
@@ -192,10 +193,10 @@ export function HomePage() {
             className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#FF9100] hover:shadow-md transition-all"
           >
             <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#FF9100] transition-colors">
-              Components
+              Componentes
             </h3>
             <p className="text-slate-600">
-              Card, StatCard, ButtonGroup - Componentes compuestos listos para
+              Card, StatCard y ButtonGroup — componentes compuestos listos para
               usar
             </p>
           </Link>
@@ -207,8 +208,8 @@ export function HomePage() {
               Tokens
             </h3>
             <p className="text-slate-600">
-              Colors, spacing, typography - Design tokens para consistencia
-              visual
+              Colores, espaciado, tipografía — tokens de diseño para
+              consistencia visual
             </p>
           </Link>
           <Link
@@ -218,7 +219,7 @@ export function HomePage() {
             <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#039BE5] transition-colors">
               Assets
             </h3>
-            <p className="text-slate-600">Logos y assets de marca de ACA</p>
+            <p className="text-slate-600">Logos y recursos de marca de ACA</p>
           </Link>
         </div>
       </section>
