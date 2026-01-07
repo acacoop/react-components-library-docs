@@ -1,9 +1,10 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { ComponentsListPage } from "./pages/components";
-import { ButtonPage } from "./pages/components/ButtonPage";
-import { ConstantsPage } from "./pages/constants";
 import { HomePage } from "./pages/home";
+import { PrimitivesPage } from "./pages/primitives";
+import { ComponentsPage } from "./pages/components";
+import { TokensPage } from "./pages/tokens";
+import { AssetsPage } from "./pages/assets";
 
 export function App() {
   return (
@@ -12,9 +13,10 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/components" element={<ComponentsListPage />} />
-          <Route path="/components/button" element={<ButtonPage />} />
-          <Route path="/constants" element={<ConstantsPage />} />
+          <Route path="/primitives" element={<PrimitivesPage />} />
+          <Route path="/components" element={<ComponentsPage />} />
+          <Route path="/tokens" element={<TokensPage />} />
+          <Route path="/assets" element={<AssetsPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Layout>

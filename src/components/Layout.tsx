@@ -3,6 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/primitives", label: "Primitives" },
+    { path: "/components", label: "Components" },
+    { path: "/tokens", label: "Tokens" },
+    { path: "/assets", label: "Assets" },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
@@ -13,41 +21,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
               to="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              <h1 className="text-2xl font-bold text-[#FF9100]">
-                ACA Components
+              <h1 className="text-2xl font-bold text-[#282D86]">
+                ACA <span className="text-[#FF9100]">Components</span>
               </h1>
             </Link>
             <nav className="flex items-center gap-6">
-              <Link
-                to="/"
-                className={`text-sm font-medium transition-colors ${
-                  location.pathname === "/"
-                    ? "text-[#FF9100]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/components"
-                className={`text-sm font-medium transition-colors ${
-                  location.pathname.startsWith("/components")
-                    ? "text-[#FF9100]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                Components
-              </Link>
-              <Link
-                to="/constants"
-                className={`text-sm font-medium transition-colors ${
-                  location.pathname === "/constants"
-                    ? "text-[#FF9100]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                Constants
-              </Link>
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === item.path ||
+                    (item.path !== "/" && location.pathname.startsWith(item.path))
+                      ? "text-[#FF9100]"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
               <a
                 href="https://github.com/acacoop/components-library"
                 target="_blank"
@@ -81,7 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="text-center md:text-left">
               <p className="font-semibold text-slate-900">ACA Components</p>
               <p className="text-sm text-slate-600 mt-1">
-                v1.0.4 - Built with React & TypeScript
+                v1.2.0 - Built with React & TypeScript
               </p>
             </div>
             <div className="flex gap-6 text-sm">
@@ -92,14 +84,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 className="text-slate-600 hover:text-[#FF9100] transition-colors"
               >
                 GitHub
-              </a>
-              <a
-                href="https://www.npmjs.com/package/@acacoop/components-library"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-600 hover:text-[#FF9100] transition-colors"
-              >
-                npm
               </a>
             </div>
           </div>
