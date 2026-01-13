@@ -409,40 +409,40 @@ export const statCardDoc: ComponentDoc = {
   importCode: `import { StatCard } from '@acacoop/react-components-library';`,
   props: [
     {
-      name: "title",
+      name: "label",
       type: "string",
       default: "-",
-      description: "Título de la estadística",
+      description: "Etiqueta descriptiva de la estadística",
     },
     {
-      name: "value",
+      name: "count",
       type: "string | number",
       default: "-",
       description: "Valor principal a mostrar",
     },
     {
-      name: "subtitle",
-      type: "string",
-      default: "-",
-      description: "Texto secundario o descripción",
+      name: "severity",
+      type: '"high" | "medium" | "low" | "neutral"',
+      default: '"neutral"',
+      description: "Nivel de severidad que define el color",
     },
     {
       name: "icon",
-      type: "LucideIcon",
+      type: "ReactNode",
       default: "-",
       description: "Ícono decorativo",
     },
     {
-      name: "trend",
-      type: '"up" | "down" | "neutral"',
-      default: "-",
-      description: "Indicador de tendencia",
+      name: "span",
+      type: "1 | 2 | 3",
+      default: "1",
+      description: "Número de columnas que ocupa en un grid",
     },
     {
-      name: "trendValue",
-      type: "string",
-      default: "-",
-      description: "Valor de la tendencia (ej: +15%)",
+      name: "loading",
+      type: "boolean",
+      default: "false",
+      description: "Muestra un spinner de carga",
     },
   ],
   sections: [
@@ -451,26 +451,25 @@ export const statCardDoc: ComponentDoc = {
       title: "Uso Básico",
       codeExamples: [
         {
-          code: `<StatCard
-  title="Usuarios Activos"
-  value="1,234"
-  subtitle="Últimos 30 días"
-/>`,
+          code: `<div className="grid grid-cols-3 gap-6">
+  <StatCard label="Total Usuarios" count="1,234" />
+  <StatCard label="Ingresos" count="$45,678" />
+  <StatCard label="Conversión" count="23.5%" />
+</div>`,
         },
       ],
     },
     {
-      id: "with-trend",
-      title: "Con Tendencia",
+      id: "severities",
+      title: "Severidades",
       codeExamples: [
         {
-          code: `<StatCard
-  title="Ingresos"
-  value="$45,231"
-  trend="up"
-  trendValue="+12.5%"
-  subtitle="vs mes anterior"
-/>`,
+          code: `<div className="grid grid-cols-4 gap-6">
+  <StatCard label="Todo bien" count="98%" severity="low" />
+  <StatCard label="Atención" count="23" severity="medium" />
+  <StatCard label="Crítico" count="5" severity="high" />
+  <StatCard label="Información" count="142" severity="neutral" />
+</div>`,
         },
       ],
     },
@@ -480,12 +479,24 @@ export const statCardDoc: ComponentDoc = {
       codeExamples: [
         {
           code: `<StatCard
-  title="Pedidos"
-  value="156"
-  icon={ShoppingCart}
-  trend="up"
-  trendValue="+8%"
+  label="Usuarios activos"
+  count="3,421"
+  icon={<UsersIcon className="w-6 h-6" />}
+  severity="low"
 />`,
+        },
+      ],
+    },
+    {
+      id: "loading",
+      title: "Estado de Carga",
+      codeExamples: [
+        {
+          code: `<div className="grid grid-cols-3 gap-6">
+  <StatCard label="Cargando datos..." count="--" loading={true} />
+  <StatCard label="Procesando..." count="--" loading={true} />
+  <StatCard label="Sincronizando..." count="--" loading={true} severity="neutral" />
+</div>`,
         },
       ],
     },
