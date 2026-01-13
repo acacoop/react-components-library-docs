@@ -1,29 +1,47 @@
 import { Link } from "react-router-dom";
 import { CodeBlock } from "../../components/CodeBlock";
-import { Button, brandAssets, COLORS } from "@acacoop/react-components-library";
+import {
+  Button,
+  brandAssets,
+  Card,
+  COLORS,
+} from "@acacoop/react-components-library";
+import { Header } from "@acacoop/react-components-library/components";
+import { ArrowRight } from "lucide-react";
+import {
+  structureItems,
+  quickLinks,
+  installationSteps,
+  heroData,
+} from "../../data/home";
 
 export function HomePage() {
   return (
     <div className="space-y-16">
       {/* Hero */}
       <section className="text-center py-12">
-        <div className="mx-auto mb-6 w-48 h-20 bg-transparent rounded-lg flex items-center justify-center">
+        <div className="mx-auto mb-6 w-48 h-20 flex items-center justify-center">
           <img
             src={brandAssets.logoFullDark}
-            alt="ACA Logo - horizontal"
+            alt="ACA Logo"
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF9100]/10 text-[#FF9100] text-sm font-medium mb-6">
-          v0.1.0 - Desarrollo
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6"
+          style={{
+            backgroundColor: `${COLORS.secondary}15`,
+            color: COLORS.secondary,
+          }}
+        >
+          {heroData.version} - {heroData.versionLabel}
         </div>
         <h1 className="text-5xl font-bold text-slate-900 mb-6">
-          Desarrollá más rápido con <br />
-          <span className="text-[#FF9100]">ACA Components</span>
+          {heroData.title} <br />
+          <span style={{ color: COLORS.secondary }}>{heroData.highlight}</span>
         </h1>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-          Librería de componentes React para proyectos de ACA. TypeScript,
-          CSS-in-JS y cero configuración.
+          {heroData.description}
         </p>
         <div className="flex justify-center gap-4">
           <Button
@@ -47,183 +65,106 @@ export function HomePage() {
       <section>
         <h2 className="text-3xl font-bold text-slate-900 mb-8">Estructura</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white font-bold"
-              style={{ backgroundColor: COLORS.primary }}
-            >
-              P
-            </div>
-            <h3 className="font-bold text-lg mb-2">Primitivos</h3>
-            <p className="text-slate-600 text-sm">
-              Bloques de construcción: Botones, Tipografía, Spinners
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white font-bold"
-              style={{ backgroundColor: COLORS.secondary }}
-            >
-              C
-            </div>
-            <h3 className="font-bold text-lg mb-2">Componentes</h3>
-            <p className="text-slate-600 text-sm">
-              Componentes compuestos: Tarjetas, Estadísticas, Grupos
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white font-bold"
-              style={{ backgroundColor: COLORS.success }}
-            >
-              T
-            </div>
-            <h3 className="font-bold text-lg mb-2">Tokens</h3>
-            <p className="text-slate-600 text-sm">
-              Tokens de diseño: colores, espaciado, tipografía
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-white font-bold"
-              style={{ backgroundColor: COLORS.info }}
-            >
-              A
-            </div>
-            <h3 className="font-bold text-lg mb-2">Assets</h3>
-            <p className="text-slate-600 text-sm">
-              Logos y assets de marca de ACA
-            </p>
-          </div>
+          {structureItems.map((item) => (
+            <Card
+              key={item.id}
+              variant="flat"
+              width="full"
+              padding="lg"
+              hoverable
+              clickable
+              onClick={() => (window.location.hash = `#${item.path}`)}
+              icon={item.icon as any}
+              iconPosition="top-left"
+              iconSize="md"
+              iconColor="#fff"
+              iconBgColor={item.color}
+              title={item.title}
+              subtitle={item.description}
+            />
+          ))}
         </div>
       </section>
 
       {/* Installation */}
       <section>
         <h2 className="text-3xl font-bold text-slate-900 mb-8">Instalación</h2>
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
+        <Card variant="flat" width="full" padding="lg">
           <div className="space-y-8">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#FF9100] text-white font-bold text-sm">
-                  1
+            {installationSteps.map((step) => (
+              <div key={step.step}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm"
+                    style={{ backgroundColor: COLORS.secondary }}
+                  >
+                    {step.step}
+                  </div>
+                  <h3 className="font-semibold text-lg text-slate-900">
+                    {step.title}
+                  </h3>
                 </div>
-                <h3 className="font-semibold text-lg text-slate-900">
-                  Configurar npm registry (solo para paquetes privados)
-                </h3>
-              </div>
-              <div className="ml-11">
-                <p className="text-slate-600 mb-3 text-sm">
-                  Crear{" "}
-                  <code className="bg-slate-100 px-2 py-1 rounded text-xs">
-                    .npmrc
-                  </code>{" "}
-                  en la raíz del proyecto:
-                </p>
-                <CodeBlock
-                  language="bash"
-                  code={`
-                    @acacoop:registry=https://npm.pkg.github.com
-                    //npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}
-                  `}
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#FF9100] text-white font-bold text-sm">
-                  2
+                <div className="ml-11">
+                  {step.description && (
+                    <p className="text-slate-600 mb-3 text-sm">
+                      {step.description}
+                    </p>
+                  )}
+                  <CodeBlock language={step.language} code={step.code} />
                 </div>
-                <h3 className="font-semibold text-lg text-slate-900">
-                  Instalar el paquete
-                </h3>
               </div>
-              <div className="ml-11">
-                <CodeBlock
-                  language="bash"
-                  code="npm install @acacoop/react-components-library"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#FF9100] text-white font-bold text-sm">
-                  3
-                </div>
-                <h3 className="font-semibold text-lg text-slate-900">
-                  Usar los componentes
-                </h3>
-              </div>
-              <div className="ml-11">
-                <CodeBlock
-                  language="tsx"
-                  code={`
-                    // Importar todo desde el paquete principal
-                    import { Button, Card, COLORS, brandAssets } from '@acacoop/react-components-library';
-
-                    // O importar desde submódulos específicos
-                    import { Button, Spinner } from '@acacoop/react-components-library/primitives';
-                    import { Card, StatCard } from '@acacoop/react-components-library/components';
-                    import { colors, spacing } from '@acacoop/react-components-library/tokens';
-                  `}
-                />
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </Card>
       </section>
 
       {/* Quick Links */}
       <section>
         <h2 className="text-3xl font-bold text-slate-900 mb-8">Explorar</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Link
-            to="/primitives"
-            className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#282D86] hover:shadow-md transition-all"
-          >
-            <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#282D86] transition-colors">
-              Primitivos
-            </h3>
-            <p className="text-slate-600">
-              Botones, Tipografía y Spinner — bloques de construcción básicos
-            </p>
-          </Link>
-          <Link
-            to="/components"
-            className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#FF9100] hover:shadow-md transition-all"
-          >
-            <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#FF9100] transition-colors">
-              Componentes
-            </h3>
-            <p className="text-slate-600">
-              Card, StatCard y ButtonGroup — componentes compuestos listos para
-              usar
-            </p>
-          </Link>
-          <Link
-            to="/tokens"
-            className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#43A047] hover:shadow-md transition-all"
-          >
-            <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#43A047] transition-colors">
-              Tokens
-            </h3>
-            <p className="text-slate-600">
-              Colores, espaciado, tipografía — tokens de diseño para
-              consistencia visual
-            </p>
-          </Link>
-          <Link
-            to="/assets"
-            className="group bg-white rounded-lg p-8 shadow-sm border border-slate-200 hover:border-[#039BE5] hover:shadow-md transition-all"
-          >
-            <h3 className="font-bold text-xl mb-3 text-slate-900 group-hover:text-[#039BE5] transition-colors">
-              Assets
-            </h3>
-            <p className="text-slate-600">Logos y recursos de marca de ACA</p>
-          </Link>
+          {quickLinks.map((link) => (
+            <Link
+              key={link.id}
+              to={link.path}
+              className="group relative overflow-hidden rounded-xl transition-all duration-200"
+            >
+              <Card
+                variant="flat"
+                width="full"
+                height="sm"
+                padding="lg"
+                hoverable
+                backgroundColor="#fff"
+              >
+                <Header
+                  title={link.title}
+                  subtitle={link.description}
+                  width="full"
+                  paddingSize="sm"
+                  titleSize="lg"
+                  subtitleSize="sm"
+                  actionButton={{
+                    label: "",
+                    icon: ArrowRight as any,
+                    variant: "ghost",
+                    size: "sm",
+                  }}
+                />
+              </Card>
+            </Link>
+          ))}
         </div>
+      </section>
+
+      {/* Footer info */}
+      <section className="text-center pb-8">
+        <p className="text-sm text-slate-500">
+          Desarrollado por{" "}
+          <span style={{ color: COLORS.primary }} className="font-medium">
+            ACA Coop
+          </span>{" "}
+          • React + TypeScript • CSS-in-JS
+        </p>
       </section>
     </div>
   );

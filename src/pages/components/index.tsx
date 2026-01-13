@@ -1,7 +1,14 @@
 import { Card, CardFooter } from "@acacoop/react-components-library";
-import { LayoutGrid, FolderOpen, BarChart3, Loader } from "lucide-react";
+import {
+  LayoutGrid,
+  FolderOpen,
+  BarChart3,
+  Loader,
+  Heading,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
+import { Header } from "@acacoop/react-components-library/components";
 
 export function ComponentsPage() {
   const components: {
@@ -34,16 +41,26 @@ export function ComponentsPage() {
       description: "Overlay de carga fullscreen o sobre contenedor específico",
       icon: Loader,
     },
+    {
+      name: "Header",
+      path: "/components/header",
+      description:
+        "Componente para encabezados con título, subtítulo y botón de acción.",
+      icon: Heading,
+    },
   ];
 
   return (
     <div className="space-y-16">
       <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Components</h1>
-        <p className="text-lg text-slate-600">
-          Componentes compuestos listos para usar. Construidos combinando
-          primitives y ofreciendo funcionalidad completa out-of-the-box.
-        </p>
+        <Header
+          title="Components"
+          subtitle="Componentes compuestos para construir interfaces de usuario completas y funcionales."
+          width="full"
+          paddingSize="sm"
+          titleSize="3xl"
+          subtitleSize="md"
+        />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -5,45 +5,25 @@ import {
   lineHeight,
 } from "@acacoop/react-components-library";
 import { CodeBlock } from "../../components/CodeBlock";
-import { Link } from "react-router-dom";
+import { DocPageLayout, DocSection } from "../../components/DocPageLayout";
+import { typographyTokenDoc } from "../../data/tokens";
 
 export function TypographyPage() {
   return (
-    <div className="space-y-16">
-      {/* Breadcrumb */}
-      <div className="text-sm text-slate-600">
-        <Link to="/tokens" className="hover:text-[#43A047]">
-          Tokens
-        </Link>
-        {" / "}
-        <span className="text-slate-900 font-medium">Typography</span>
-      </div>
-
-      {/* Header */}
-      <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Typography</h1>
-        <p className="text-lg text-slate-600">
-          Sistema tipográfico consistente. Incluye familias de fuente, tamaños,
-          pesos y alturas de línea.
-        </p>
-      </section>
-
-      {/* Import */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Importación</h2>
-        <CodeBlock
-          language="tsx"
-          code={`
-            import { typography } from '@acacoop/react-components-library';
-          `}
-        />
-      </section>
-
+    <DocPageLayout
+      title={typographyTokenDoc.name}
+      description={typographyTokenDoc.description}
+      accentColor={typographyTokenDoc.accentColor}
+      breadcrumbs={[
+        {
+          label: typographyTokenDoc.parentName,
+          path: typographyTokenDoc.parentPath,
+        },
+      ]}
+      importCode={typographyTokenDoc.importCode}
+    >
       {/* Font Families */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Familias de Fuente
-        </h2>
+      <DocSection title="Familias de Fuente">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="space-y-6">
             <div>
@@ -83,19 +63,13 @@ export function TypographyPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              fontFamily.sans  // "${fontFamily.sans}"
-              fontFamily.mono     // "${fontFamily.mono}"
-            `}
+            code={typographyTokenDoc.sections[0].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Font Sizes */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Tamaños de Fuente
-        </h2>
+      <DocSection title="Tamaños de Fuente">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="space-y-4">
             {Object.entries(fontSize).map(([key, value]) => (
@@ -122,26 +96,13 @@ export function TypographyPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              fontSize.xs      // ${fontSize.xs}px
-              fontSize.sm      // ${fontSize.sm}px
-              fontSize.md      // ${fontSize.md}px
-              fontSize.lg      // ${fontSize.lg}px
-              fontSize.xl      // ${fontSize.xl}px
-              fontSize['2xl']  // ${fontSize["2xl"]}px
-              fontSize['3xl']  // ${fontSize["3xl"]}px
-              fontSize['4xl']  // ${fontSize["4xl"]}px
-              fontSize['5xl']  // ${fontSize["5xl"]}px
-            `}
+            code={typographyTokenDoc.sections[1].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Font Weights */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Pesos de Fuente
-        </h2>
+      <DocSection title="Pesos de Fuente">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="space-y-4">
             {Object.entries(fontWeight).map(([key, value]) => (
@@ -169,22 +130,13 @@ export function TypographyPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              fontWeight.light    // ${fontWeight.light}
-              fontWeight.normal   // ${fontWeight.normal}
-              fontWeight.medium   // ${fontWeight.medium}
-              fontWeight.semibold // ${fontWeight.semibold}
-              fontWeight.bold     // ${fontWeight.bold}
-            `}
+            code={typographyTokenDoc.sections[2].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Line Heights */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Alturas de Línea
-        </h2>
+      <DocSection title="Alturas de Línea">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="space-y-6">
             {Object.entries(lineHeight).map(([key, value]) => (
@@ -218,21 +170,13 @@ export function TypographyPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              lineHeight.tight   // ${lineHeight.tight}
-              lineHeight.normal  // ${lineHeight.normal}
-              lineHeight.relaxed // ${lineHeight.relaxed}
-              lineHeight.loose   // ${lineHeight.loose}
-            `}
+            code={typographyTokenDoc.sections[3].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Usage Examples */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Ejemplos de Uso
-        </h2>
+      <DocSection title="Ejemplos de Uso">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="space-y-6">
             {/* Heading Example */}
@@ -312,38 +256,10 @@ export function TypographyPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              // Título principal
-              <h1 style={{
-                fontFamily: fontFamily.sans,
-                fontSize: fontSize['5xl'],
-                fontWeight: fontWeight.bold,
-                lineHeight: lineHeight.tight
-              }}>
-                Título
-              </h1>
-
-              // Texto del cuerpo
-              <p style={{
-                fontFamily: fontFamily.sans,
-                fontSize: fontSize.md,
-                fontWeight: fontWeight.normal,
-                lineHeight: lineHeight.normal
-              }}>
-                Contenido del párrafo
-              </p>
-
-              // Código fuente
-              <code style={{
-                fontFamily: fontFamily.mono,
-                fontSize: fontSize.sm
-              }}>
-                const code = "example";
-              </code>
-            `}
+            code={typographyTokenDoc.sections[4].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
-    </div>
+      </DocSection>
+    </DocPageLayout>
   );
 }

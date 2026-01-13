@@ -1,50 +1,32 @@
 import { LoadingOverlay, Button } from "@acacoop/react-components-library";
 import { CodeBlock } from "../../components/CodeBlock";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import {
+  DocPageLayout,
+  DocSection,
+  PropsTable,
+} from "../../components/DocPageLayout";
+import { loadingOverlayDoc } from "../../data/components";
 
 export function LoadingOverlayPage() {
   const [showFullscreen, setShowFullscreen] = useState(false);
   const [showContainer, setShowContainer] = useState(false);
 
   return (
-    <div className="space-y-16">
-      {/* Breadcrumb */}
-      <div className="text-sm text-slate-600">
-        <Link to="/components" className="hover:text-[#FF9100]">
-          Components
-        </Link>
-        {" / "}
-        <span className="text-slate-900 font-medium">LoadingOverlay</span>
-      </div>
-
-      {/* Header */}
-      <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">
-          LoadingOverlay
-        </h1>
-        <p className="text-lg text-slate-600">
-          Overlay de carga que puede cubrir toda la pantalla o un contenedor
-          específico, bloqueando la interacción durante procesos asíncronos.
-        </p>
-      </section>
-
-      {/* Import */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Importación</h2>
-        <CodeBlock
-          language="tsx"
-          code={`
-            import { LoadingOverlay } from '@acacoop/react-components-library';
-          `}
-        />
-      </section>
-
+    <DocPageLayout
+      title={loadingOverlayDoc.name}
+      description={loadingOverlayDoc.description}
+      accentColor={loadingOverlayDoc.accentColor}
+      breadcrumbs={[
+        {
+          label: loadingOverlayDoc.parentName,
+          path: loadingOverlayDoc.parentPath,
+        },
+      ]}
+      importCode={loadingOverlayDoc.importCode}
+    >
       {/* Fullscreen */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Pantalla Completa
-        </h2>
+      <DocSection title="Pantalla Completa">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200 space-y-4">
           <p className="text-slate-600">
             Por defecto, el overlay cubre toda la pantalla y bloquea toda la
@@ -63,26 +45,13 @@ export function LoadingOverlayPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              const [isLoading, setIsLoading] = useState(false);
-
-              <Button onClick={() => setIsLoading(true)}>
-                Cargar datos
-              </Button>
-
-              {isLoading && (
-                <LoadingOverlay message="Cargando datos..." />
-              )}
-            `}
+            code={loadingOverlayDoc.sections[0].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Container */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Sobre Contenedor
-        </h2>
+      <DocSection title="Sobre Contenedor">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200 space-y-4">
           <p className="text-slate-600">
             Con{" "}
@@ -132,28 +101,13 @@ export function LoadingOverlayPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <div style={{ position: 'relative', minHeight: '300px' }}>
-                <h3>Contenido...</h3>
-                <p>Más contenido...</p>
-
-                {isLoading && (
-                  <LoadingOverlay
-                    fullScreen={false}
-                    message="Procesando..."
-                  />
-                )}
-              </div>
-            `}
+            code={loadingOverlayDoc.sections[1].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* With Custom Message */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Mensaje Personalizado
-        </h2>
+      <DocSection title="Mensaje Personalizado">
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div
@@ -188,118 +142,15 @@ export function LoadingOverlayPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <LoadingOverlay message="Guardando cambios..." />
-              <LoadingOverlay />
-            `}
+            code={loadingOverlayDoc.sections[2].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Props */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Props</h2>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
-              <tr>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Prop
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Tipo
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Default
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Descripción
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    fullScreen
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">boolean</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">true</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Si cubre toda la pantalla o solo el contenedor
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    message
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Texto descriptivo del proceso
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    opacity
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">number</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">0.5</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Opacidad del fondo (0-1)
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    spinnerSize
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"sm" | "md" | "lg"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"md"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Tamaño del spinner
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    spinnerColor
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"primary"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Color del spinner
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+      <DocSection title="Props">
+        <PropsTable props={loadingOverlayDoc.props} />
+      </DocSection>
+    </DocPageLayout>
   );
 }

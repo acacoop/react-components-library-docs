@@ -1,4 +1,5 @@
 import { Card, CardFooter } from "@acacoop/react-components-library";
+import { Header } from "@acacoop/react-components-library/components";
 import { MousePointerClick, Type, LoaderCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
@@ -33,12 +34,16 @@ export function PrimitivesPage() {
   return (
     <div className="space-y-16 min-h-[60vh]">
       <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Primitives</h1>
-        <p className="text-lg text-slate-600">
-          Bloques de construcción elementales para interfaces de usuario.
+        <Header
+          title="Primitivos"
+          subtitle="Bloques de construcción elementales para interfaces de usuario.
           Componentes simples y reutilizables que forman la base del design
-          system.
-        </p>
+          system."
+          width="full"
+          paddingSize="sm"
+          titleSize="3xl"
+          subtitleSize="md"
+        />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">

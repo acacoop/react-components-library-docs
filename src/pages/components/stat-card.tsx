@@ -1,42 +1,25 @@
 import { StatCard } from "@acacoop/react-components-library";
 import { CodeBlock } from "../../components/CodeBlock";
-import { Link } from "react-router-dom";
+import {
+  DocPageLayout,
+  DocSection,
+  PropsTable,
+} from "../../components/DocPageLayout";
+import { statCardDoc } from "../../data/components";
 
 export function StatCardPage() {
   return (
-    <div className="space-y-16">
-      {/* Breadcrumb */}
-      <div className="text-sm text-slate-600">
-        <Link to="/components" className="hover:text-[#FF9100]">
-          Components
-        </Link>
-        {" / "}
-        <span className="text-slate-900 font-medium">StatCard</span>
-      </div>
-
-      {/* Header */}
-      <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">StatCard</h1>
-        <p className="text-lg text-slate-600">
-          Muestra métricas y estadísticas importantes con soporte para íconos,
-          severidades y estados de carga.
-        </p>
-      </section>
-
-      {/* Import */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Importación</h2>
-        <CodeBlock
-          language="tsx"
-          code={`
-            import { StatCard } from '@acacoop/react-components-library';
-          `}
-        />
-      </section>
-
+    <DocPageLayout
+      title={statCardDoc.name}
+      description={statCardDoc.description}
+      accentColor={statCardDoc.accentColor}
+      breadcrumbs={[
+        { label: statCardDoc.parentName, path: statCardDoc.parentPath },
+      ]}
+      importCode={statCardDoc.importCode}
+    >
       {/* Basic */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Uso Básico</h2>
+      <DocSection title="Uso Básico">
         <div className="bg-slate-50 rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StatCard label="Total Usuarios" count="1,234" />
@@ -47,45 +30,13 @@ export function StatCardPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <StatCard label="Total Usuarios" count="1,234" />
-              <StatCard label="Ingresos" count="$45,678" />
-              <StatCard label="Conversión" count="23.5%" />
-            `}
+            code={statCardDoc.sections[0].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
-
-      {/* With Subtitle */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Con Severidad
-        </h2>
-        <div className="bg-slate-50 rounded-xl p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <StatCard label="Uptime del sistema" count="99.9%" severity="low" />
-            <StatCard label="Tareas pendientes" count="23" severity="medium" />
-            <StatCard label="Errores activos" count="5" severity="high" />
-            <StatCard label="Notificaciones" count="12" severity="neutral" />
-          </div>
-        </div>
-        <div className="mt-4">
-          <CodeBlock
-            language="tsx"
-            code={`
-              <StatCard
-                label="Uptime del sistema"
-                count="99.9%"
-                severity="low"
-              />
-            `}
-          />
-        </div>
-      </section>
+      </DocSection>
 
       {/* Severities */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Severidades</h2>
+      <DocSection title="Severidades">
         <div className="bg-slate-50 rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatCard label="Todo bien" count="98%" severity="low" />
@@ -97,38 +48,13 @@ export function StatCardPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <StatCard
-                label="Todo bien"
-                count="98%"
-                severity="low"
-              />
-
-              <StatCard
-                label="Atención"
-                count="23"
-                severity="medium"
-              />
-
-              <StatCard
-                label="Crítico"
-                count="5"
-                severity="high"
-              />
-
-              <StatCard
-                label="Información"
-                count="142"
-                severity="neutral"
-              />
-            `}
+            code={statCardDoc.sections[1].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* With Icon */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Con Ícono</h2>
+      <DocSection title="Con Ícono">
         <div className="bg-slate-50 rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StatCard
@@ -196,23 +122,13 @@ export function StatCardPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <StatCard
-                label="Usuarios activos"
-                count="3,421"
-                icon={<UsersIcon />}
-                severity="low"
-              />
-            `}
+            code={statCardDoc.sections[2].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Loading State */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Estado de Carga
-        </h2>
+      <DocSection title="Estado de Carga">
         <div className="bg-slate-50 rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StatCard label="Cargando datos..." count="--" loading={true} />
@@ -228,145 +144,15 @@ export function StatCardPage() {
         <div className="mt-4">
           <CodeBlock
             language="tsx"
-            code={`
-              <StatCard
-                label="Cargando datos..."
-                count="--"
-                loading={true}
-              />
-            `}
+            code={statCardDoc.sections[3].codeExamples?.[0].code || ""}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Props */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Props</h2>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
-              <tr>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Prop
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Tipo
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Default
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Descripción
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    label
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Etiqueta principal de la estadística
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    count
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string | number</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Valor numérico a mostrar
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    subtitle
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Texto descriptivo adicional
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    severity
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "high" | "medium" | "low" | "neutral"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Nivel de severidad visual
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    icon
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">ReactNode</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Ícono opcional a mostrar
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    loading
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">boolean</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">false</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Muestra spinner de carga
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    className
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Clases CSS adicionales
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+      <DocSection title="Props">
+        <PropsTable props={statCardDoc.props} />
+      </DocSection>
+    </DocPageLayout>
   );
 }

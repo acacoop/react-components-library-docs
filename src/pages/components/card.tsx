@@ -5,7 +5,12 @@ import {
   CardFooter,
 } from "@acacoop/react-components-library";
 import { CodeBlock } from "../../components/CodeBlock";
-import { Link } from "react-router-dom";
+import {
+  DocPageLayout,
+  DocSection,
+  PropsTable,
+} from "../../components/DocPageLayout";
+import { cardDoc } from "../../data/components";
 import {
   Settings,
   User,
@@ -21,38 +26,15 @@ import {
 
 export function CardPage() {
   return (
-    <div className="space-y-16">
-      {/* Breadcrumb */}
-      <div className="text-sm text-slate-600">
-        <Link to="/components" className="hover:text-[#FF9100]">
-          Components
-        </Link>
-        {" / "}
-        <span className="text-slate-900 font-medium">Card</span>
-      </div>
-
-      {/* Header */}
-      <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">Card</h1>
-        <p className="text-lg text-slate-600">
-          Contenedor flexible para agrupar información relacionada con soporte
-          para íconos, múltiples layouts y dimensiones personalizables.
-        </p>
-      </section>
-
-      {/* Import */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Importación</h2>
-        <CodeBlock
-          language="tsx"
-          code={`import { Card, CardHeader, CardContent, CardFooter } from '@acacoop/react-components-library';
-import { Settings } from 'lucide-react'; // Para usar íconos`}
-        />
-      </section>
-
+    <DocPageLayout
+      title={cardDoc.name}
+      description={cardDoc.description}
+      accentColor={cardDoc.accentColor}
+      breadcrumbs={[{ label: cardDoc.parentName, path: cardDoc.parentPath }]}
+      importCode={cardDoc.importCode}
+    >
       {/* Variants */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Variantes</h2>
+      <DocSection title="Variantes">
         <div className="bg-slate-50 rounded-xl p-8 space-y-6">
           <Card variant="elevated">
             <CardContent>
@@ -83,13 +65,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
 <Card variant="flat">...</Card>`}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Icon Positions */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Posiciones de Ícono
-        </h2>
+      <DocSection title="Posiciones de Ícono">
         <p className="text-slate-600 mb-6">
           Las cards pueden incluir íconos de Lucide React en diferentes
           posiciones para crear layouts variados.
@@ -296,12 +275,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   <p>Contenido adicional...</p>
 </Card>`}
         />
-      </section>
+      </DocSection>
 
       {/* Sizes */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Tamaños</h2>
-
+      <DocSection title="Tamaños">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Width</h3>
         <div className="bg-slate-50 rounded-xl p-8 mb-4 space-y-4">
           <Card width="xs" variant="outlined">
@@ -373,11 +350,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
 <Card height="full">...</Card> // 100%
 <Card height="auto">...</Card> // auto (default)`}
         />
-      </section>
+      </DocSection>
 
       {/* Padding */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Padding</h2>
+      <DocSection title="Padding">
         <div className="bg-slate-50 rounded-xl p-8 mb-4">
           <div className="flex flex-wrap gap-4">
             <Card padding="none" variant="outlined" width="xs">
@@ -409,13 +385,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
 <Card padding="lg">...</Card>
 <Card padding="xl">...</Card>`}
         />
-      </section>
+      </DocSection>
 
       {/* Icon with Background */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Ícono con Fondo
-        </h2>
+      <DocSection title="Ícono con Fondo">
         <p className="text-slate-600 mb-6">
           Usa{" "}
           <code className="bg-slate-100 px-2 py-1 rounded text-sm">
@@ -468,13 +441,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   title="Rendimiento"
 />`}
         />
-      </section>
+      </DocSection>
 
       {/* CardHeader with Icon */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          CardHeader con Ícono
-        </h2>
+      <DocSection title="CardHeader con Ícono">
         <div className="bg-slate-50 rounded-xl p-8 mb-4">
           <Card>
             <CardHeader
@@ -506,11 +476,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   </CardContent>
 </Card>`}
         />
-      </section>
+      </DocSection>
 
       {/* Hoverable */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Hoverable</h2>
+      <DocSection title="Hoverable">
         <div className="bg-slate-50 rounded-xl p-8 mb-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card
@@ -557,13 +526,10 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   subtitle="12 sin leer"
 />`}
         />
-      </section>
+      </DocSection>
 
       {/* With Header */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Con Header y Footer
-        </h2>
+      <DocSection title="Con Header y Footer">
         <div className="bg-slate-50 rounded-xl p-8">
           <Card>
             <CardHeader title="Título del Card" subtitle="Subtítulo opcional" />
@@ -601,321 +567,57 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
 </Card>`}
           />
         </div>
-      </section>
+      </DocSection>
 
       {/* Props */}
-      <section>
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Props</h2>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
-              <tr>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Prop
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Tipo
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Default
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Descripción
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    variant
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "elevated" | "outlined" | "flat"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"elevated"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Estilo visual del card
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    padding
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "xs" | "sm" | "md" | "lg" | "xl" | "none"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"md"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Padding interno</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    width
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "xs" | "sm" | "md" | "lg" | "xl" | "full" | "auto"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"auto"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Ancho del card</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    height
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "xs" | "sm" | "md" | "lg" | "xl" | "full" | "auto"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"auto"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Alto del card</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    icon
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    LucideIcon | React.ComponentType
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Componente de ícono
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconPosition
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "top-center" | "top-left" | "top-right" | "left" | "right" |
-                    "inline-left" | "inline-right"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"top-center"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Posición del ícono
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconSize
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "xs" | "sm" | "md" | "lg" | "xl"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">"md"</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Tamaño del ícono</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconColor
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">primary</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Color del ícono</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconBgColor
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Color de fondo del ícono
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    title
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Título para layouts con ícono
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    subtitle
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">-</td>
-                <td className="p-4 text-sm text-slate-600">
-                  Subtítulo para layouts con ícono
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    hoverable
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">boolean</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">false</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Efecto hover con elevación
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <DocSection title="Props">
+        <PropsTable props={cardDoc.props} />
 
         {/* CardHeader Props */}
         <h3 className="text-lg font-semibold text-slate-900 mt-8 mb-4">
           CardHeader Props
         </h3>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
-              <tr>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Prop
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Tipo
-                </th>
-                <th className="text-left p-4 font-semibold text-slate-900">
-                  Descripción
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    title
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Título del header (requerido)
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    subtitle
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Subtítulo opcional
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    action
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">ReactNode</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  Elemento de acción a la derecha
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    icon
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">LucideIcon</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Ícono del header</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconSize
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">
-                    "xs" | "sm" | "md" | "lg" | "xl"
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Tamaño del ícono</td>
-              </tr>
-              <tr>
-                <td className="p-4">
-                  <code className="text-sm bg-slate-100 px-2 py-1 rounded">
-                    iconColor
-                  </code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <code className="text-xs">string</code>
-                </td>
-                <td className="p-4 text-sm text-slate-600">Color del ícono</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+        <PropsTable
+          props={[
+            {
+              name: "title",
+              type: "string",
+              default: "-",
+              description: "Título del header (requerido)",
+            },
+            {
+              name: "subtitle",
+              type: "string",
+              default: "-",
+              description: "Subtítulo opcional",
+            },
+            {
+              name: "action",
+              type: "ReactNode",
+              default: "-",
+              description: "Elemento de acción a la derecha",
+            },
+            {
+              name: "icon",
+              type: "LucideIcon",
+              default: "-",
+              description: "Ícono del header",
+            },
+            {
+              name: "iconSize",
+              type: '"xs" | "sm" | "md" | "lg" | "xl"',
+              default: '"md"',
+              description: "Tamaño del ícono",
+            },
+            {
+              name: "iconColor",
+              type: "string",
+              default: "primary",
+              description: "Color del ícono",
+            },
+          ]}
+        />
+      </DocSection>
+    </DocPageLayout>
   );
 }

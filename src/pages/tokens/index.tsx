@@ -1,6 +1,8 @@
 import { Card, CardFooter } from "@acacoop/react-components-library";
 import { Palette, Ruler, Type } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Header } from "@acacoop/react-components-library/components";
+
 import type { LucideIcon } from "lucide-react";
 
 export function TokensPage() {
@@ -33,14 +35,16 @@ export function TokensPage() {
   return (
     <div className="space-y-16 min-h-[60vh]">
       <section>
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">
-          Design Tokens
-        </h1>
-        <p className="text-lg text-slate-600">
-          Tokens de diseño para mantener consistencia visual en todos los
+        <Header
+          title="Design Tokens"
+          subtitle="Tokens de diseño para mantener consistencia visual en todos los
           proyectos. Valores reutilizables para colores, espaciado, tipografía y
-          más.
-        </p>
+          más."
+          width="full"
+          paddingSize="sm"
+          titleSize="3xl"
+          subtitleSize="md"
+        />
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

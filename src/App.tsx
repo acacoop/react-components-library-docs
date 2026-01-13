@@ -12,6 +12,7 @@ import { ButtonGroupPage } from "./pages/components/button-group";
 import { CardPage } from "./pages/components/card";
 import { StatCardPage } from "./pages/components/stat-card";
 import { LoadingOverlayPage } from "./pages/components/loading-overlay";
+import { HeaderPage } from "./pages/components/header";
 import { ColorsPage } from "./pages/tokens/colors";
 import { SpacingPage } from "./pages/tokens/spacing";
 import { TypographyPage as TypographyTokenPage } from "./pages/tokens/typography";
@@ -38,6 +39,7 @@ export function App() {
             path="/components/loading-overlay"
             element={<LoadingOverlayPage />}
           />
+          <Route path="/components/header" element={<HeaderPage />} />
           <Route path="/tokens" element={<TokensPage />} />
           <Route path="/tokens/colors" element={<ColorsPage />} />
           <Route path="/tokens/spacing" element={<SpacingPage />} />
