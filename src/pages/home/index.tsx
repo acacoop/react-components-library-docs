@@ -27,13 +27,15 @@ export function HomePage() {
         </p>
         <div className="flex justify-center gap-4">
           <Button
+            size="lg"
             variant="primary"
             onClick={() => (window.location.hash = "#/primitives")}
           >
             Ver Primitives
           </Button>
           <Button
-            variant="outline"
+            size="lg"
+            variant="secondary"
             onClick={() => (window.location.hash = "#/components")}
           >
             Ver Components

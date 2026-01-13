@@ -105,7 +105,7 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
               icon={Settings}
               iconPosition="top-center"
               iconSize="xl"
-              iconColor="#FF9100"
+              iconColor="#282D86"
               title="Configuración"
               subtitle="Ajusta las preferencias del sistema"
               width="sm"
@@ -119,7 +119,7 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   icon={Settings}
   iconPosition="top-center"
   iconSize="xl"
-  iconColor="#FF9100"
+  iconColor="#282D86"
   title="Configuración"
   subtitle="Ajusta las preferencias del sistema"
   width="sm"
@@ -137,7 +137,7 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
               icon={User}
               iconPosition="top-left"
               iconSize="lg"
-              iconColor="#3B82F6"
+              iconColor="#FE9000"
               title="Perfil de Usuario"
               subtitle="Información personal"
               width="md"
@@ -150,7 +150,7 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   icon={User}
   iconPosition="top-left"
   iconSize="lg"
-  iconColor="#3B82F6"
+  iconColor="#FE9000"
   title="Perfil de Usuario"
   subtitle="Información personal"
   width="md"
@@ -236,13 +236,13 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
             icon={Shield}
             iconPosition="left"
             iconSize="xl"
-            iconColor="#10B981"
-            iconBgColor="#D1FAE5"
+            iconColor="#fff"
+            iconBgColor="#282D86"
             title="Seguridad Activa"
             subtitle="Tu cuenta está protegida"
             width="lg"
           >
-            <p className="text-slate-600 mt-2">
+            <p className="text-slate-600 ">
               Todas las verificaciones de seguridad están habilitadas.
             </p>
           </Card>
@@ -253,8 +253,8 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
   icon={Shield}
   iconPosition="left"
   iconSize="xl"
-  iconColor="#10B981"
-  iconBgColor="#D1FAE5"
+  iconColor="#fff"
+  iconBgColor="#282D86"
   title="Seguridad Activa"
   subtitle="Tu cuenta está protegida"
   width="lg"
@@ -381,9 +381,7 @@ import { Settings } from 'lucide-react'; // Para usar íconos`}
         <div className="bg-slate-50 rounded-xl p-8 mb-4">
           <div className="flex flex-wrap gap-4">
             <Card padding="none" variant="outlined" width="xs">
-              <div className="bg-blue-100 p-2">
-                <p className="text-xs text-slate-600">padding="none"</p>
-              </div>
+              <p className="text-xs text-slate-600">padding="none"</p>
             </Card>
             <Card padding="xs" variant="outlined" width="xs">
               <p className="text-xs text-slate-600">padding="xs"</p>

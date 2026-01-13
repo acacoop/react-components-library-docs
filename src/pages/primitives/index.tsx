@@ -1,29 +1,37 @@
-import { NavCard } from "../../components/NavCard";
+import { Card, CardFooter } from "@acacoop/react-components-library";
+import { MousePointerClick, Type, LoaderCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import type { LucideIcon } from "lucide-react";
 
 export function PrimitivesPage() {
-  const primitives = [
+  const primitives: {
+    name: string;
+    path: string;
+    description: string;
+    icon: LucideIcon;
+  }[] = [
     {
       name: "Button",
       path: "/primitives/button",
       description: "Botón base con múltiples variantes y estados",
-      icon: "🔘",
+      icon: MousePointerClick,
     },
     {
       name: "Typography",
       path: "/primitives/typography",
       description: "Heading, Text, Caption y Label para composición de texto",
-      icon: "📝",
+      icon: Type,
     },
     {
       name: "Spinner",
       path: "/primitives/spinner",
       description: "Indicador de carga animado con tamaños y colores",
-      icon: "⏳",
+      icon: LoaderCircle,
     },
   ];
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 min-h-[60vh]">
       <section>
         <h1 className="text-4xl font-bold text-slate-900 mb-4">Primitives</h1>
         <p className="text-lg text-slate-600">
@@ -33,16 +41,26 @@ export function PrimitivesPage() {
         </p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {primitives.map((primitive) => (
-          <NavCard
-            key={primitive.path}
-            title={primitive.name}
-            description={primitive.description}
-            icon={primitive.icon}
-            to={primitive.path}
-            accentColor="#282D86"
-          />
+          <Link key={primitive.path} to={primitive.path}>
+            <Card
+              title={primitive.name}
+              subtitle={primitive.description}
+              variant="outlined"
+              width="sm"
+              icon={primitive.icon}
+              iconPosition="top-left"
+              iconSize="lg"
+              iconColor="#282D86"
+              height="auto"
+              padding="xl"
+              hoverable
+              clickable
+            >
+              <CardFooter textColor="#282D86">Ver documentación →</CardFooter>
+            </Card>
+          </Link>
         ))}
       </section>
     </div>
