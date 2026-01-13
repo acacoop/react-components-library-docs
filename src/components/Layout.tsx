@@ -1,3 +1,4 @@
+import { brandAssets } from "@acacoop/react-components-library";
 import { Link, useLocation } from "react-router-dom";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -19,11 +20,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+              className="flex items-center gap-5 hover:opacity-80 transition-opacity"
             >
-              <h1 className="text-2xl font-bold text-[#282D86]">
-                ACA <span className="text-[#FF9100]">Components</span>
-              </h1>
+              <img
+                src={brandAssets.logoIconDark}
+                alt="Logo"
+                className="w-16 h-16 object-contain"
+              />
+              <h1 className="text-2xl font-bold text-[#FF9100]">Components</h1>
             </Link>
             <nav className="flex items-center gap-6">
               {navItems.map((item) => (
@@ -42,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               ))}
               <a
-                href="https://github.com/acacoop/components-library"
+                href="https://github.com/acacoop/react-components-library"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-600 hover:text-slate-900 transition-colors"
@@ -79,7 +83,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </div>
             <div className="flex gap-6 text-sm">
               <a
-                href="https://github.com/acacoop/components-library"
+                href="https://github.com/acacoop/react-components-library"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-600 hover:text-[#FF9100] transition-colors"
