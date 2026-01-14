@@ -126,10 +126,11 @@ import { colors, spacing } from '@acacoop/react-components-library/tokens';`,
 ];
 
 export const heroData = {
-  version: "v0.1.0",
-  versionLabel: "Desarrollo",
+  version: "v0.2.0",
+  versionLabel: "Beta",
   title: "Desarrollá más rápido con",
-  highlight: "ACA Components",
+  subtitle: "ACA Components",
   description:
-    "Librería de componentes React para proyectos de ACA. TypeScript, CSS-in-JS y cero configuración.",
+    "Sistema de diseño unificado para aplicaciones ACA. Componentes reutilizables, tipados y optimizados para desarrollo en equipo.",
+  highlight: "Consistencia y eficiencia en cada proyecto.",
 };

@@ -3,6 +3,7 @@ import {
   CardHeader,
   CardContent,
   CardFooter,
+  Button,
 } from "@acacoop/react-components-library";
 import { CodeBlock } from "../../components/CodeBlock";
 import {
@@ -11,18 +12,7 @@ import {
   PropsTable,
 } from "../../components/DocPageLayout";
 import { cardDoc } from "../../data/components";
-import {
-  Settings,
-  User,
-  Bell,
-  Star,
-  Heart,
-  Mail,
-  Shield,
-  Zap,
-  Package,
-  TrendingUp,
-} from "lucide-react";
+import { Settings, Bell, Star, Heart, Mail, Zap, Package } from "lucide-react";
 
 export function CardPage() {
   return (
@@ -71,7 +61,8 @@ export function CardPage() {
       <DocSection title="Posiciones de Ícono">
         <p className="text-slate-600 mb-6">
           Las cards pueden incluir íconos de Lucide React en diferentes
-          posiciones para crear layouts variados.
+          posiciones para crear layouts variados. Todas las posiciones usan el
+          mismo contenido variando únicamente la ubicación del ícono.
         </p>
 
         {/* Top Center */}
@@ -83,10 +74,11 @@ export function CardPage() {
             <Card
               icon={Settings}
               iconPosition="top-center"
-              iconSize="xl"
-              iconColor="#282D86"
+              iconSize="lg"
+              iconColor="#fff"
+              iconBgColor="#282D86"
               title="Configuración"
-              subtitle="Ajusta las preferencias del sistema"
+              subtitle="Personaliza tu experiencia"
               width="sm"
               padding="lg"
             />
@@ -97,10 +89,11 @@ export function CardPage() {
               code={`<Card
   icon={Settings}
   iconPosition="top-center"
-  iconSize="xl"
-  iconColor="#282D86"
+  iconSize="lg"
+  iconColor="#fff"
+  iconBgColor="#282D86"
   title="Configuración"
-  subtitle="Ajusta las preferencias del sistema"
+  subtitle="Personaliza tu experiencia"
   width="sm"
   padding="lg"
 />`}
@@ -113,26 +106,64 @@ export function CardPage() {
         <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
           <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
             <Card
-              icon={User}
+              icon={Settings}
               iconPosition="top-left"
               iconSize="lg"
-              iconColor="#FE9000"
-              title="Perfil de Usuario"
-              subtitle="Información personal"
-              width="md"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
             />
           </div>
           <div className="md:w-1/2">
             <CodeBlock
               language="tsx"
               code={`<Card
-  icon={User}
+  icon={Settings}
   iconPosition="top-left"
   iconSize="lg"
-  iconColor="#FE9000"
-  title="Perfil de Usuario"
-  subtitle="Información personal"
-  width="md"
+  iconColor="#fff"
+  iconBgColor="#282D86"
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
+/>`}
+            />
+          </div>
+        </div>
+
+        {/* Top Right */}
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">Top Right</h3>
+        <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
+          <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
+            <Card
+              icon={Settings}
+              iconPosition="top-right"
+              iconSize="lg"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <CodeBlock
+              language="tsx"
+              code={`<Card
+  icon={Settings}
+  iconPosition="top-right"
+  iconSize="lg"
+  iconColor="#fff"
+  iconBgColor="#282D86"
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
 />`}
             />
           </div>
@@ -145,33 +176,31 @@ export function CardPage() {
         <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
           <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
             <Card
-              icon={Bell}
+              icon={Settings}
               iconPosition="inline-left"
-              iconSize="md"
-              iconColor="#EF4444"
-              title="Notificaciones"
-              subtitle="Tienes 5 mensajes sin leer"
-              width="md"
-            >
-              <p className="text-slate-600 mt-3">
-                Revisa tu bandeja de entrada para ver los últimos mensajes.
-              </p>
-            </Card>
+              iconSize="lg"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
+            />
           </div>
           <div className="md:w-1/2">
             <CodeBlock
               language="tsx"
               code={`<Card
-  icon={Bell}
+  icon={Settings}
   iconPosition="inline-left"
-  iconSize="md"
-  iconColor="#EF4444"
-  title="Notificaciones"
-  subtitle="Tienes 5 mensajes sin leer"
-  width="md"
->
-  <p>Contenido adicional...</p>
-</Card>`}
+  iconSize="lg"
+  iconColor="#fff"
+  iconBgColor="#282D86"
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
+/>`}
             />
           </div>
         </div>
@@ -183,26 +212,30 @@ export function CardPage() {
         <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
           <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
             <Card
-              icon={Star}
+              icon={Settings}
               iconPosition="inline-right"
               iconSize="lg"
-              iconColor="#F59E0B"
-              title="Favoritos"
-              subtitle="Tus elementos guardados"
-              width="md"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
             />
           </div>
           <div className="md:w-1/2">
             <CodeBlock
               language="tsx"
               code={`<Card
-  icon={Star}
+  icon={Settings}
   iconPosition="inline-right"
   iconSize="lg"
-  iconColor="#F59E0B"
-  title="Favoritos"
-  subtitle="Tus elementos guardados"
-  width="md"
+  iconColor="#fff"
+  iconBgColor="#282D86"
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
 />`}
             />
           </div>
@@ -210,71 +243,71 @@ export function CardPage() {
 
         {/* Left */}
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Left</h3>
-        <div className="bg-slate-50 rounded-xl p-8 mb-4">
-          <Card
-            icon={Shield}
-            iconPosition="left"
-            iconSize="xl"
-            iconColor="#fff"
-            iconBgColor="#282D86"
-            title="Seguridad Activa"
-            subtitle="Tu cuenta está protegida"
-            width="lg"
-          >
-            <p className="text-slate-600 ">
-              Todas las verificaciones de seguridad están habilitadas.
-            </p>
-          </Card>
-        </div>
-        <CodeBlock
-          language="tsx"
-          code={`<Card
-  icon={Shield}
+        <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
+          <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
+            <Card
+              icon={Settings}
+              iconPosition="left"
+              iconSize="lg"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <CodeBlock
+              language="tsx"
+              code={`<Card
+  icon={Settings}
   iconPosition="left"
-  iconSize="xl"
+  iconSize="lg"
   iconColor="#fff"
   iconBgColor="#282D86"
-  title="Seguridad Activa"
-  subtitle="Tu cuenta está protegida"
-  width="lg"
->
-  <p>Contenido adicional...</p>
-</Card>`}
-        />
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
+/>`}
+            />
+          </div>
+        </div>
 
         {/* Right */}
-        <h3 className="text-lg font-semibold text-slate-900 mb-4 mt-8">
-          Right
-        </h3>
-        <div className="bg-slate-50 rounded-xl p-8 mb-4">
-          <Card
-            icon={TrendingUp}
-            iconPosition="right"
-            iconSize="xl"
-            iconColor="#8B5CF6"
-            title="Estadísticas"
-            subtitle="Resumen del mes"
-            width="lg"
-          >
-            <p className="text-slate-600 mt-2">
-              Has incrementado tu productividad un 25% este mes.
-            </p>
-          </Card>
-        </div>
-        <CodeBlock
-          language="tsx"
-          code={`<Card
-  icon={TrendingUp}
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">Right</h3>
+        <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
+          <div className="bg-slate-50 rounded-xl p-8 flex items-center justify-center min-h-[400px] md:min-w-[400px] md:w-1/2">
+            <Card
+              icon={Settings}
+              iconPosition="right"
+              iconSize="lg"
+              iconColor="#fff"
+              iconBgColor="#282D86"
+              title="Configuración"
+              subtitle="Personaliza tu experiencia"
+              width="sm"
+              padding="lg"
+            />
+          </div>
+          <div className="md:w-1/2">
+            <CodeBlock
+              language="tsx"
+              code={`<Card
+  icon={Settings}
   iconPosition="right"
-  iconSize="xl"
-  iconColor="#8B5CF6"
-  title="Estadísticas"
-  subtitle="Resumen del mes"
-  width="lg"
->
-  <p>Contenido adicional...</p>
-</Card>`}
-        />
+  iconSize="lg"
+  iconColor="#fff"
+  iconBgColor="#282D86"
+  title="Configuración"
+  subtitle="Personaliza tu experiencia"
+  width="sm"
+  padding="lg"
+/>`}
+            />
+          </div>
+        </div>
       </DocSection>
 
       {/* Sizes */}
@@ -540,12 +573,12 @@ export function CardPage() {
               </p>
             </CardContent>
             <CardFooter>
-              <button className="px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded">
+              <Button variant="secondary" size="sm">
                 Cancelar
-              </button>
-              <button className="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">
+              </Button>
+              <Button variant="primary" size="sm">
                 Confirmar
-              </button>
+              </Button>
             </CardFooter>
           </Card>
         </div>
@@ -561,8 +594,12 @@ export function CardPage() {
     <p>Contenido principal...</p>
   </CardContent>
   <CardFooter>
-    <button>Cancelar</button>
-    <button>Confirmar</button>
+    <Button variant="outline" size="sm">
+      Cancelar
+    </Button>
+    <Button variant="solid" size="sm">
+      Confirmar
+    </Button>
   </CardFooter>
 </Card>`}
           />
