@@ -158,7 +158,8 @@ export function HomePage() {
                 <Card
                   variant="outlined"
                   width="md"
-                  padding="lg"
+                  padding="xl"
+                  height="md"
                   hoverable
                   clickable
                   style={{
