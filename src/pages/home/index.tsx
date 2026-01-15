@@ -113,7 +113,7 @@ export function HomePage() {
             <Link to="/primitives" style={{ textDecoration: "none" }}>
               <Button variant="secondary" size="lg">
                 Comenzar
-                <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                <ArrowRight size={16} />
               </Button>
             </Link>
             <a
