@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@acacoop/react-components-library": "^0.2.0",
+    "@acacoop/react-components-library": "^0.4.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
