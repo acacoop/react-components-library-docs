@@ -8,6 +8,8 @@ import {
   BarChart3,
   Loader,
   PanelTop,
+  MessageSquareWarning,
+  Bell,
 } from "lucide-react";
 import type { PropDefinition, DocSection } from "./primitives";
 
@@ -749,6 +751,396 @@ import { Plus } from 'lucide-react'; // Para íconos en el botón`,
   ],
 };
 
+// ============ DIALOG ============
+export const dialogDoc: ComponentDoc = {
+  name: "Dialog",
+  path: "/components/dialog",
+  description:
+    "Modal de confirmación con overlay oscuro y botones de acción para solicitar confirmación del usuario.",
+  icon: MessageSquareWarning,
+  accentColor: "#FE9000",
+  parentPath: "/components",
+  parentName: "Components",
+  importCode: `import { Dialog } from '@acacoop/react-components-library';
+import { Trash2 } from 'lucide-react'; // Para íconos`,
+  props: [
+    {
+      name: "isOpen",
+      type: "boolean",
+      default: "-",
+      description: "Si el modal está visible",
+    },
+    {
+      name: "title",
+      type: "string",
+      default: "-",
+      description: "Título del modal",
+    },
+    {
+      name: "message",
+      type: "string",
+      default: "-",
+      description: "Mensaje o descripción del modal",
+    },
+    {
+      name: "confirmText",
+      type: "string",
+      default: '"Confirmar"',
+      description: "Texto del botón de confirmación",
+    },
+    {
+      name: "cancelText",
+      type: "string",
+      default: '"Cancelar"',
+      description: "Texto del botón de cancelación",
+    },
+    {
+      name: "confirmVariant",
+      type: '"primary" | "secondary" | "destructive"',
+      default: '"primary"',
+      description: "Variante del botón de confirmación",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Tamaño del modal (sm=320px, md=420px, lg=520px)",
+    },
+    {
+      name: "onConfirm",
+      type: "() => void",
+      default: "-",
+      description: "Callback al confirmar",
+    },
+    {
+      name: "onCancel",
+      type: "() => void",
+      default: "-",
+      description: "Callback al cancelar",
+    },
+    {
+      name: "closeOnOverlayClick",
+      type: "boolean",
+      default: "true",
+      description: "Si se puede cerrar haciendo click en el overlay",
+    },
+    {
+      name: "showCancelButton",
+      type: "boolean",
+      default: "true",
+      description: "Si se muestra el botón de cancelar",
+    },
+    {
+      name: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "Contenido personalizado (reemplaza message)",
+    },
+    {
+      name: "isLoading",
+      type: "boolean",
+      default: "false",
+      description: "Si el botón de confirmar está en estado de carga",
+    },
+    {
+      name: "icon",
+      type: "ReactNode",
+      default: "-",
+      description: "Ícono para mostrar en el header del modal",
+    },
+  ],
+  sections: [
+    {
+      id: "basic",
+      title: "Uso Básico",
+      codeExamples: [
+        {
+          code: `const [isOpen, setIsOpen] = useState(false);
+
+<Button onClick={() => setIsOpen(true)}>
+  Abrir Modal
+</Button>
+
+<Dialog
+  isOpen={isOpen}
+  title="Confirmar acción"
+  message="¿Estás seguro de que deseas continuar?"
+  onConfirm={() => setIsOpen(false)}
+  onCancel={() => setIsOpen(false)}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "destructive",
+      title: "Variante Destructiva",
+      codeExamples: [
+        {
+          code: `<Dialog
+  isOpen={isOpen}
+  title="¿Eliminar elemento?"
+  message="Esta acción no se puede deshacer."
+  confirmText="Eliminar"
+  confirmVariant="destructive"
+  icon={<Trash2 size={20} />}
+  onConfirm={handleDelete}
+  onCancel={() => setIsOpen(false)}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "with-icon",
+      title: "Con Ícono",
+      codeExamples: [
+        {
+          code: `<Dialog
+  isOpen={isOpen}
+  title="Información importante"
+  message="Este mensaje requiere tu atención."
+  confirmText="Entendido"
+  showCancelButton={false}
+  icon={<Info size={20} />}
+  onConfirm={() => setIsOpen(false)}
+  onCancel={() => setIsOpen(false)}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "sizes",
+      title: "Tamaños",
+      codeExamples: [
+        {
+          code: `// Pequeño
+<Dialog size="sm" ... />
+
+// Mediano (default)
+<Dialog size="md" ... />
+
+// Grande
+<Dialog size="lg" ... />`,
+        },
+      ],
+    },
+    {
+      id: "loading",
+      title: "Estado de Carga",
+      codeExamples: [
+        {
+          code: `const [isLoading, setIsLoading] = useState(false);
+
+const handleConfirm = async () => {
+  setIsLoading(true);
+  await saveChanges();
+  setIsLoading(false);
+  setIsOpen(false);
+};
+
+<Dialog
+  isOpen={isOpen}
+  title="Guardar cambios"
+  message="¿Deseas guardar los cambios?"
+  isLoading={isLoading}
+  onConfirm={handleConfirm}
+  onCancel={() => setIsOpen(false)}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "no-cancel",
+      title: "Sin Botón Cancelar",
+      codeExamples: [
+        {
+          code: `<Dialog
+  isOpen={isOpen}
+  title="Sesión expirada"
+  message="Por favor, inicia sesión nuevamente."
+  confirmText="Ir al login"
+  showCancelButton={false}
+  onConfirm={handleRedirect}
+  onCancel={() => {}}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "custom-content",
+      title: "Contenido Personalizado",
+      codeExamples: [
+        {
+          code: `<Dialog
+  isOpen={isOpen}
+  title="Términos y Condiciones"
+  confirmText="Acepto"
+  cancelText="No acepto"
+  onConfirm={handleAccept}
+  onCancel={() => setIsOpen(false)}
+>
+  <div className="space-y-3">
+    <p>Al continuar, aceptas los términos:</p>
+    <ul className="list-disc list-inside">
+      <li>Uso responsable</li>
+      <li>Protección de datos</li>
+    </ul>
+  </div>
+</Dialog>`,
+        },
+      ],
+    },
+  ],
+};
+
+// ============ TOAST ============
+export const toastDoc: ComponentDoc = {
+  name: "Toast",
+  path: "/components/toast",
+  description:
+    "Notificación emergente para mostrar mensajes de feedback al usuario, con soporte para variantes de éxito, error, warning e info.",
+  icon: Bell,
+  accentColor: "#FE9000",
+  parentPath: "/components",
+  parentName: "Components",
+  importCode: `import { Toast } from '@acacoop/react-components-library';`,
+  props: [
+    {
+      name: "message",
+      type: "string",
+      default: "-",
+      description: "Mensaje a mostrar en la notificación (requerido)",
+    },
+    {
+      name: "variant",
+      type: '"success" | "error" | "warning" | "info"',
+      default: '"info"',
+      description: "Variante del toast que define el color y estilo",
+    },
+    {
+      name: "isVisible",
+      type: "boolean",
+      default: "-",
+      description: "Si el toast está visible (requerido)",
+    },
+    {
+      name: "onClose",
+      type: "() => void",
+      default: "-",
+      description: "Callback al cerrar el toast",
+    },
+    {
+      name: "duration",
+      type: "number",
+      default: "3000",
+      description:
+        "Duración en ms antes de cerrar automáticamente (0 = no auto-cerrar)",
+    },
+    {
+      name: "position",
+      type: '"top-right" | "top-left" | "top-center" | "bottom-right" | "bottom-left" | "bottom-center"',
+      default: '"top-right"',
+      description: "Posición del toast en la pantalla",
+    },
+    {
+      name: "title",
+      type: "string",
+      default: "-",
+      description: "Título opcional del toast",
+    },
+    {
+      name: "showCloseButton",
+      type: "boolean",
+      default: "true",
+      description: "Si se muestra el botón de cerrar",
+    },
+    {
+      name: "icon",
+      type: "ReactNode",
+      default: "-",
+      description: "Ícono personalizado (usa ícono por defecto según variante)",
+    },
+  ],
+  sections: [
+    {
+      id: "basic",
+      title: "Uso Básico",
+      codeExamples: [
+        {
+          code: `const [showToast, setShowToast] = useState(false);
+
+<Toast
+  message="Operación completada exitosamente"
+  variant="success"
+  isVisible={showToast}
+  onClose={() => setShowToast(false)}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "variants",
+      title: "Variantes",
+      codeExamples: [
+        {
+          code: `<Toast message="Operación exitosa" variant="success" ... />
+<Toast message="Ocurrió un error" variant="error" ... />
+<Toast message="Advertencia importante" variant="warning" ... />
+<Toast message="Información útil" variant="info" ... />`,
+        },
+      ],
+    },
+    {
+      id: "positions",
+      title: "Posiciones",
+      codeExamples: [
+        {
+          code: `<Toast position="top-right" ... />
+<Toast position="top-center" ... />
+<Toast position="bottom-left" ... />`,
+        },
+      ],
+    },
+    {
+      id: "with-title",
+      title: "Con Título",
+      codeExamples: [
+        {
+          code: `<Toast
+  title="¡Éxito!"
+  message="Los datos se guardaron correctamente"
+  variant="success"
+  isVisible={isVisible}
+  onClose={handleClose}
+/>`,
+        },
+      ],
+    },
+    {
+      id: "auto-dismiss",
+      title: "Auto-cerrar",
+      codeExamples: [
+        {
+          code: `// Se cierra automáticamente después de 3 segundos
+<Toast
+  message="Este mensaje desaparecerá pronto"
+  duration={3000}
+  isVisible={isVisible}
+  onClose={handleClose}
+/>
+
+// No se cierra automáticamente
+<Toast
+  message="Debes cerrar manualmente"
+  duration={0}
+  isVisible={isVisible}
+  onClose={handleClose}
+/>`,
+        },
+      ],
+    },
+  ],
+};
+
 // Lista de todos los components
 export const componentDocs = [
   buttonGroupDoc,
@@ -756,4 +1148,6 @@ export const componentDocs = [
   statCardDoc,
   loadingOverlayDoc,
   headerDoc,
+  dialogDoc,
+  toastDoc,
 ];

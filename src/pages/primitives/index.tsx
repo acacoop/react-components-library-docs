@@ -1,6 +1,13 @@
 import { Card, CardFooter } from "@acacoop/react-components-library";
 import { Header } from "@acacoop/react-components-library/components";
-import { MousePointerClick, Type, LoaderCircle } from "lucide-react";
+import {
+  MousePointerClick,
+  Type,
+  LoaderCircle,
+  Image,
+  Tag,
+  Navigation,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 
@@ -28,6 +35,25 @@ export function PrimitivesPage() {
       path: "/primitives/spinner",
       description: "Indicador de carga animado con tamaños y colores",
       icon: LoaderCircle,
+    },
+    {
+      name: "IconWrapper",
+      path: "/primitives/icon-wrapper",
+      description:
+        "Renderiza iconos de forma consistente con tamaños y colores",
+      icon: Image,
+    },
+    {
+      name: "Chip",
+      path: "/primitives/chip",
+      description: "Etiquetas compactas para tags, estados y categorías",
+      icon: Tag,
+    },
+    {
+      name: "Breadcrumbs",
+      path: "/primitives/breadcrumbs",
+      description: "Navegación jerárquica para mostrar la ubicación actual",
+      icon: Navigation,
     },
   ];
 

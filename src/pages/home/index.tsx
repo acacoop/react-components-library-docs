@@ -8,7 +8,7 @@ import {
   Text,
   ButtonGroup,
 } from "@acacoop/react-components-library";
-import { ArrowRight, Github, Sparkles } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import {
   structureItems,
   quickLinks,
@@ -45,9 +45,8 @@ export function HomePage() {
               backgroundColor: "#fff",
             }}
           >
-            <Sparkles size={14} style={{ color: COLORS.secondary }} />
             <Text size="sm" color="secondary">
-              {heroData.version} • {heroData.versionLabel}
+              {heroData.version}
             </Text>
           </div>
 

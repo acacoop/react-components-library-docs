@@ -5,6 +5,8 @@ import {
   BarChart3,
   Loader,
   Heading,
+  MessageSquareWarning,
+  Bell,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
@@ -47,6 +49,20 @@ export function ComponentsPage() {
       description:
         "Componente para encabezados con título, subtítulo y botón de acción.",
       icon: Heading,
+    },
+    {
+      name: "Dialog",
+      path: "/components/dialog",
+      description:
+        "Modal de confirmación con overlay oscuro y botones de acción.",
+      icon: MessageSquareWarning,
+    },
+    {
+      name: "Toast",
+      path: "/components/toast",
+      description:
+        "Notificación emergente para feedback de operaciones exitosas o erróneas.",
+      icon: Bell,
     },
   ];
 
