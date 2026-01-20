@@ -4,7 +4,7 @@
  */
 import { Link } from "react-router-dom";
 import { Header } from "@acacoop/react-components-library/components";
-import { Card } from "@acacoop/react-components-library";
+import { Card, Breadcrumbs } from "@acacoop/react-components-library";
 import { CodeBlock } from "./CodeBlock";
 import type { PropDefinition } from "../data/primitives";
 
@@ -39,24 +39,32 @@ export function DocPageLayout({
   return (
     <div className="space-y-12">
       {/* Breadcrumb */}
-      <nav className="text-sm text-slate-600">
-        {breadcrumbs.map((item, index) => (
-          <span key={item.path}>
-            <Link
-              to={item.path}
-              className="transition-colors"
-              style={{ color: "inherit" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = accentColor)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
-            >
-              {item.label}
-            </Link>
-            {index < breadcrumbs.length - 1 && " / "}
-          </span>
-        ))}
-        {" / "}
-        <span className="text-slate-900 font-medium">{title}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          ...breadcrumbs.map((item) => ({
+            label: item.label,
+            href: item.path,
+          })),
+          { label: title },
+        ]}
+        hoverColor={accentColor}
+        linkComponent={({
+          href,
+          children,
+          style,
+          onMouseEnter,
+          onMouseLeave,
+        }) => (
+          <Link
+            to={href}
+            style={style}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
+            {children}
+          </Link>
+        )}
+      />
 
       {/* Header */}
       <Header

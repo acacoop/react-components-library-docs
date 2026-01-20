@@ -2,7 +2,14 @@
  * Datos de documentación para primitives
  */
 import type { LucideIcon } from "lucide-react";
-import { MousePointerClick, Type, LoaderCircle } from "lucide-react";
+import {
+  MousePointerClick,
+  Type,
+  LoaderCircle,
+  Image,
+  Tag,
+  Navigation,
+} from "lucide-react";
 
 export interface PropDefinition {
   name: string;
@@ -276,5 +283,212 @@ import { Heading, Text, Caption, Label } from '@acacoop/react-components-library
   ],
 };
 
+// ============ ICON WRAPPER ============
+export const iconWrapperDoc: PrimitiveDoc = {
+  name: "IconWrapper",
+  path: "/primitives/icon-wrapper",
+  description:
+    "Componente para renderizar iconos de forma consistente. Soporta iconos de Lucide React (via prop icon) y SVGs personalizados (via prop src) con tamaños estandarizados.",
+  icon: Image,
+  accentColor: "#282D86",
+  parentPath: "/primitives",
+  parentName: "Primitives",
+  importCode: `import { IconWrapper } from '@acacoop/react-components-library';
+// o
+import { IconWrapper } from '@acacoop/react-components-library/primitives';`,
+  props: [
+    {
+      name: "src",
+      type: "string",
+      default: "-",
+      description:
+        "Ruta/URL del SVG para iconos personalizados. Se importa el SVG y se pasa como string.",
+    },
+    {
+      name: "icon",
+      type: "ComponentType",
+      default: "-",
+      description:
+        "Componente de icono (Lucide React, etc.). Alternativa a src.",
+    },
+    {
+      name: "size",
+      type: '"xs" | "sm" | "md" | "lg" | "xl"',
+      default: '"md"',
+      description:
+        "Tamaño del icono (xs=12px, sm=16px, md=20px, lg=24px, xl=32px)",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: "-",
+      description: "Color del icono. Solo funciona con prop icon, no con src.",
+    },
+    {
+      name: "className",
+      type: "string",
+      default: "-",
+      description: "Clase CSS adicional",
+    },
+    {
+      name: "style",
+      type: "CSSProperties",
+      default: "-",
+      description: "Estilos inline adicionales",
+    },
+    {
+      name: "alt",
+      type: "string",
+      default: '"icon"',
+      description: "Texto alternativo para accesibilidad (usado con src)",
+    },
+  ],
+  sections: [],
+};
+
+// ============ CHIP ============
+export const chipDoc: PrimitiveDoc = {
+  name: "Chip",
+  path: "/primitives/chip",
+  description:
+    "Componente compacto para mostrar etiquetas, tags, categorías o elementos seleccionables. Ideal para filtros, estados y metadatos.",
+  icon: Tag,
+  accentColor: "#282D86",
+  parentPath: "/primitives",
+  parentName: "Primitives",
+  importCode: `import { Chip } from '@acacoop/react-components-library';
+// o
+import { Chip } from '@acacoop/react-components-library/primitives';`,
+  props: [
+    {
+      name: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "Contenido del chip (texto o elementos)",
+    },
+    {
+      name: "variant",
+      type: '"default" | "primary" | "secondary" | "success" | "warning" | "error" | "info" | "outline"',
+      default: '"default"',
+      description: "Variante visual del chip",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Tamaño del chip (sm=24px, md=32px, lg=40px de altura)",
+    },
+    {
+      name: "startIcon",
+      type: "ReactNode",
+      default: "-",
+      description: "Icono o elemento al inicio del chip",
+    },
+    {
+      name: "endIcon",
+      type: "ReactNode",
+      default: "-",
+      description: "Icono o elemento al final del chip",
+    },
+    {
+      name: "onDelete",
+      type: "() => void",
+      default: "-",
+      description:
+        "Callback para eliminar. Si se proporciona, muestra un botón de cerrar",
+    },
+    {
+      name: "onClick",
+      type: "() => void",
+      default: "-",
+      description: "Callback cuando se hace click en el chip",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Deshabilita el chip y previene interacción",
+    },
+  ],
+  sections: [],
+};
+
+// ============ BREADCRUMBS ============
+export const breadcrumbsDoc: PrimitiveDoc = {
+  name: "Breadcrumbs",
+  path: "/primitives/breadcrumbs",
+  description:
+    "Navegación jerárquica que muestra la ubicación actual del usuario dentro de la estructura del sitio. Soporta iconos, separadores personalizados e integración con React Router.",
+  icon: Navigation,
+  accentColor: "#282D86",
+  parentPath: "/primitives",
+  parentName: "Primitives",
+  importCode: `import { Breadcrumbs } from '@acacoop/react-components-library';
+// o
+import { Breadcrumbs } from '@acacoop/react-components-library/primitives';`,
+  props: [
+    {
+      name: "items",
+      type: "BreadcrumbItem[]",
+      default: "-",
+      description:
+        "Array de items del breadcrumb. Cada item tiene label, href opcional, onClick opcional e icon opcional.",
+    },
+    {
+      name: "separator",
+      type: "ReactNode",
+      default: '"/"',
+      description:
+        "Separador entre items. Puede ser texto, icono o cualquier elemento React.",
+    },
+    {
+      name: "size",
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: "Tamaño del breadcrumb.",
+    },
+    {
+      name: "color",
+      type: "string",
+      default: "COLORS.textSecondary",
+      description: "Color del texto de los items navegables.",
+    },
+    {
+      name: "activeColor",
+      type: "string",
+      default: "COLORS.textPrimary",
+      description: "Color del texto del item activo (último).",
+    },
+    {
+      name: "hoverColor",
+      type: "string",
+      default: "COLORS.primary",
+      description: "Color del texto en hover.",
+    },
+    {
+      name: "maxItems",
+      type: "number",
+      default: "-",
+      description:
+        "Máximo de items a mostrar. Si hay más, se colapsan con ellipsis.",
+    },
+    {
+      name: "linkComponent",
+      type: "ComponentType",
+      default: "-",
+      description:
+        "Componente personalizado para renderizar links (ej: Link de React Router).",
+    },
+  ],
+  sections: [],
+};
+
 // Lista de todos los primitives
-export const primitiveDocs = [buttonDoc, spinnerDoc, typographyDoc];
+export const primitiveDocs = [
+  buttonDoc,
+  spinnerDoc,
+  typographyDoc,
+  iconWrapperDoc,
+  chipDoc,
+  breadcrumbsDoc,
+];
