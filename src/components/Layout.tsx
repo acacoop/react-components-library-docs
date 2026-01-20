@@ -272,7 +272,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 ACA Components
               </Text>
               <Text size="sm" color="secondary">
-                v0.2.0 • React & TypeScript
+                v0.4.0 • React & TypeScript
               </Text>
             </div>
             <div style={{ display: "flex", gap: "24px", fontSize: "14px" }}>

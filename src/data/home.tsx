@@ -126,7 +126,7 @@ import { colors, spacing } from '@acacoop/react-components-library/tokens';`,
 ];
 
 export const heroData = {
-  version: "v0.2.0",
+  version: "v0.4.0",
   versionLabel: "",
   title: "Desarrollá más rápido con",
   subtitle: "ACA Components",
