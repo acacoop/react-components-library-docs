@@ -110,10 +110,13 @@ export function HomePage() {
           {/* CTA Buttons */}
           <ButtonGroup spacing="md" align="center">
             <Link to="/primitives" style={{ textDecoration: "none" }}>
-              <Button variant="secondary" size="lg">
-                Comenzar
-                <ArrowRight size={16} />
-              </Button>
+              <Button
+                icon={<ArrowRight size={16} />}
+                text="Comenzar"
+                variant="secondary"
+                size="lg"
+                iconPosition="right"
+              />
             </Link>
             <a
               href="https://github.com/acacoop/react-components-library"
@@ -121,10 +124,13 @@ export function HomePage() {
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
-              <Button variant="outline" size="lg">
-                <Github size={18} style={{ marginRight: "8px" }} />
-                GitHub
-              </Button>
+              <Button
+                text="GitHub"
+                variant="outline"
+                size="lg"
+                icon={<Github size={16} />}
+                iconPosition="right"
+              />
             </a>
           </ButtonGroup>
         </div>

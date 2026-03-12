@@ -6,7 +6,7 @@ import {
   PropsTable,
 } from "../../components/DocPageLayout";
 import { breadcrumbsDoc } from "../../data/primitives";
-import { Home, ChevronRight, Folder, File, Settings, User } from "lucide-react";
+import { Home, ChevronRight, Folder, File, Settings, User, ArrowLeft, ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function BreadcrumbsPage() {
@@ -440,6 +440,129 @@ export function BreadcrumbsPage() {
   ]}
 />
 // Resultado: Home / ... / 2024 / Q4 / Report.pdf`}
+          />
+        </div>
+      </DocSection>
+
+      {/* Con Botón de Volver */}
+      <DocSection title="Con Botón de Volver">
+        <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200 space-y-6">
+          <p className="text-slate-600">
+            Usa{" "}
+            <code className="text-sm bg-slate-100 px-2 py-1 rounded">
+              showBackButton
+            </code>{" "}
+            para agregar un botón de volver. Puedes posicionarlo a la izquierda o derecha con{" "}
+            <code className="text-sm bg-slate-100 px-2 py-1 rounded">
+              backButtonPosition
+            </code>.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <span className="text-xs text-slate-500 mb-2 block">
+                Solo ícono (izquierda)
+              </span>
+              <Breadcrumbs
+                showBackButton
+                onBackClick={() => alert("Navegando hacia atrás...")}
+                items={[
+                  { label: "Home", href: "#" },
+                  { label: "Products", href: "#" },
+                  { label: "Category" },
+                ]}
+              />
+            </div>
+            <div>
+              <span className="text-xs text-slate-500 mb-2 block">
+                Con texto e ícono (izquierda)
+              </span>
+              <Breadcrumbs
+                showBackButton
+                backButtonText="Volver"
+                backButtonVariant="outline"
+                onBackClick={() => alert("Navegando hacia atrás...")}
+                items={[
+                  { label: "Home", href: "#" },
+                  { label: "Settings", href: "#" },
+                  { label: "Profile" },
+                ]}
+              />
+            </div>
+            <div>
+              <span className="text-xs text-slate-500 mb-2 block">
+                Posicionado a la derecha (estilo PageHeader)
+              </span>
+              <Breadcrumbs
+                showBackButton
+                backButtonText="Volver"
+                backButtonVariant="outline"
+                backButtonPosition="right"
+                onBackClick={() => alert("Navegando hacia atrás...")}
+                items={[
+                  { label: "Dashboard", href: "#" },
+                  { label: "Reports", href: "#" },
+                  { label: "Q4 2024" },
+                ]}
+              />
+            </div>
+            <div>
+              <span className="text-xs text-slate-500 mb-2 block">
+                Con ícono personalizado a la derecha
+              </span>
+              <Breadcrumbs
+                showBackButton
+                backButtonText="Atrás"
+                backButtonIcon={<IconWrapper icon={ChevronLeft} size="sm" color="currentColor" />}
+                backButtonPosition="right"
+                backButtonVariant="ghost"
+                onBackClick={() => alert("Navegando hacia atrás...")}
+                items={[
+                  { label: "Home", href: "#" },
+                  { label: "Users", href: "#" },
+                  { label: "John Doe" },
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <CodeBlock
+            language="tsx"
+            code={`// Solo ícono (izquierda por defecto)
+<Breadcrumbs
+  showBackButton
+  onBackClick={() => navigate(-1)}
+  items={items}
+/>
+
+// Con texto e ícono
+<Breadcrumbs
+  showBackButton
+  backButtonText="Volver"
+  backButtonVariant="outline"
+  onBackClick={() => navigate(-1)}
+  items={items}
+/>
+
+// Posicionado a la derecha (estilo PageHeader)
+<Breadcrumbs
+  showBackButton
+  backButtonText="Volver"
+  backButtonVariant="outline"
+  backButtonPosition="right"
+  onBackClick={() => navigate(-1)}
+  items={items}
+/>
+
+// Con ícono personalizado
+<Breadcrumbs
+  showBackButton
+  backButtonText="Atrás"
+  backButtonIcon={<IconWrapper icon={ChevronLeft} size="sm" />}
+  backButtonPosition="right"
+  onBackClick={() => navigate(-1)}
+  items={items}
+/>`}
           />
         </div>
       </DocSection>
